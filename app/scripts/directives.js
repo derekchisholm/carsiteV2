@@ -147,6 +147,30 @@ function iboxToolsFullScreen($timeout) {
     };
 }
 
+/**
+ * footable complete - Directive for rendering footables after data has been populated.
+ */
+function footableComplete(){
+    return function(scope, element){
+        var footableTable = element.parents('table');
+        
+        if( !scope.$last ) {
+            return false;
+        }
+        
+        scope.$evalAsync(function(){
+            
+            if (! footableTable.hasClass('footable-loaded')) {
+                footableTable.footable();
+            }
+            
+            footableTable.trigger('footable_initialized');
+            footableTable.trigger('footable_resize');
+            footableTable.data('footable').redraw();
+        });
+    };
+}
+
 
 
 /**
@@ -159,4 +183,5 @@ angular
     .directive('sideNavigation', sideNavigation)
     .directive('iboxTools', iboxTools)
     .directive('minimalizaSidebar', minimalizaSidebar)
-    .directive('iboxToolsFullScreen', iboxToolsFullScreen);
+    .directive('iboxToolsFullScreen', iboxToolsFullScreen)
+    .directive('footableComplete', footableComplete);

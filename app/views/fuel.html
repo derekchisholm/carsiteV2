@@ -1,14 +1,50 @@
 <div class="wrapper wrapper-content animated fadeInRight" ng-controller="FuelCtrl">
     <div class="row">
         <div class="col-lg-12">
-            <div class="text-center m-t-lg">
-                <p>{{fillUps[0].id}}</p>
-                <p>{{fillUps[0].odometer}}</p>
-                <p>{{fillUps[0].price}}</p>
-                <h1>
-                    Simple example of second view
-                </h1>
-                <small>Configure in config.js as minor state.</small>
+            <div class="ibox float-e-margins">
+                
+                <div class="ibox-title">
+                    <div>
+                        <h5>Fill-ups - {{fillUps[0].vehicle}}</h5>
+                    </div>                    
+                </div>
+                
+                <div class="ibox-content">
+                    <table class="footable table table-striped toggle-arrow-tiny">
+                        <thead>
+                            <tr>
+                                <th data-toggle="true">Id</th>
+                                <th>Odometer</th>
+                                <th>Price $/gal</th>
+                                <th>Volume</th>
+                                <th>Cost</th>
+                                <th data-hide="all">Partial Fill-up?</th>
+                                <th data-hide="all">Missed Fill-ups?</th>
+                                <th>Date</th>
+                                <th data-hide="all">Payment Type</th>
+                                <th>Fuel</th>
+                                <th data-hide="all">Station</th>
+                                <th data-hide="all">Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="fillUp in fillUps" footable-complete>
+                                <td>{{fillUp.id}}</td>
+                                <td>{{fillUp.odometer}}</td>
+                                <td>{{fillUp.price}}</td>
+                                <td>{{fillUp.volume}}</td>
+                                <td>{{fillUp.cost}}</td>
+                                <td>{{fillUp.partial}}</td>
+                                <td>{{fillUp.missed}}</td>
+                                <td>{{fillUp.dateTime}}</td>
+                                <td>{{fillUp.paymentType}}</td>
+                                <td>{{fillUp.fuel[0].octane}}</td>
+                                <td>{{fillUp.station[0].name}}</td>
+                                <td>{{fillUp.note}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
