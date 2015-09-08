@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1, 
+        "odometer": 42000,
+        "price": 3.15,
+        "volume": 19,
+        "cost": 0,
+        "partial": "n",
+        "missed": "n",
+        "vehicle": 1,
+        "dateTime": "2015-09-05T11:45:00.511Z",
+        "paymentType": "credit",
+        "fuel": [
+                {
+                       "category": "gasoline",
+                       "type": "premium",
+                       "octane": "91"
+                }
+        ],
+        "station": [
+                {
+                        "name": "Jacksons",
+                        "brand": "shell",
+                        "address": "500 S Meadows Pkwy, Reno, NV 89509"
+                }
+        ],
+        "note": "This gas station has a great sandwich shop inside!"
+    }
+]

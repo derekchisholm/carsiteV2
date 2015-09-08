@@ -14,7 +14,14 @@ function DashboardCtrl() {
 
 };
 
+function FuelCtrl($scope, $http) {
+    $http.get('data/fill-ups.json').
+        then(function(data) {
+            $scope.fillUps = data.data;
+    });
+};
 
 angular
     .module('app')
     .controller('DashboardCtrl', DashboardCtrl)
+    .controller('FuelCtrl', FuelCtrl)
