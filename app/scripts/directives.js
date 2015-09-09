@@ -148,7 +148,7 @@ function iboxToolsFullScreen($timeout) {
 }
 
 /**
- * footable complete - Directive for rendering footables after data has been populated.
+ * footable complete - Directive for rendering footables after data has been populated already.
  */
 function footableComplete(){
     return function(scope, element){
