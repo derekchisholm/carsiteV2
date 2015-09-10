@@ -1,6 +1,23 @@
-<div class="wrapper wrapper-content animated fadeInRight" ng-controller="FuelCtrl">
-    <div class="row">
-        <div class="col-lg-12">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row" ng-controller="PricePerGalCtrl">
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                
+                <div class="ibox-title">
+                    <div>
+                        <h5>Price $/gal</h5>
+                    </div>
+                </div>
+                
+                <div class="ibox-content">
+                    <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+            
+    <div class="row" ng-controller="FuelListCtrl">
+        <div class="col-lg-12">        
             <div class="ibox float-e-margins">
                 
                 <div class="ibox-title">

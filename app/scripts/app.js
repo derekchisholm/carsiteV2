@@ -6,6 +6,7 @@
     angular.module('app', [
         'ui.router',                    // Routing
         'ui.bootstrap',                 // Bootstrap
-        'ui.footable'
+        'ui.footable',
+        'chart.js'
     ])
 })();
