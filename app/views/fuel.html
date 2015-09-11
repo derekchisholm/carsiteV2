@@ -1,11 +1,25 @@
 <div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row" ng-controller="PricePerGalCtrl">
-        <div class="col-lg-6">
+    <div class="row">
+        <div class="col-lg-6" ng-controller="PricePerGalCtrl">
             <div class="ibox float-e-margins">
                 
                 <div class="ibox-title">
                     <div>
                         <h5>Price $/gal</h5>
+                    </div>
+                </div>
+                
+                <div class="ibox-content">
+                    <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6" ng-controller="MilesPerGalCtrl">
+            <div class="ibox float-e-margins">
+                
+                <div class="ibox-title">
+                    <div>
+                        <h5>Miles/gal</h5>
                     </div>
                 </div>
                 

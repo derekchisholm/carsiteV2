@@ -37,6 +37,31 @@ function PricePerGalCtrl($scope, $http, $filter) {
     });
 }
 
+function MilesPerGalCtrl($scope, $http, $filter) {
+    $http.get('data/fill-ups.json').
+        then(function(data) {
+            $scope.fillUps = data.data;
+            
+            $scope.labels = [];
+            $scope.seriesA = [];
+            $scope.dataSets = [];
+            
+            for (i = 0; i < $scope.fillUps.length; i++) {
+                date = new Date($scope.fillUps[i].dateTime);
+                date = $filter("date")(date, "shortDate");
+                
+                distance = (i > 0) ? $scope.fillUps[i].odometer - $scope.fillUps[i - 1].odometer : 0;
+                mpg = (i > 0) ? distance / $scope.fillUps[i].volume : 0;
+                
+                $scope.labels.push(date);
+                $scope.seriesA.push(mpg.toFixed(1));
+            }
+            
+            $scope.dataSets.push($scope.seriesA);
+            $scope.data = $scope.dataSets;
+    });
+}
+
 function FuelListCtrl($scope, $http) {
     $http.get('data/fill-ups.json').
         then(function(data) {
@@ -56,3 +81,4 @@ angular
     .controller('DashboardCtrl', DashboardCtrl)
     .controller('FuelListCtrl', FuelListCtrl)
     .controller('PricePerGalCtrl', PricePerGalCtrl)
+    .controller('MilesPerGalCtrl', MilesPerGalCtrl)
