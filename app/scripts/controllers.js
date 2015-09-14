@@ -14,6 +14,10 @@ function DashboardCtrl() {
 
 };
 
+function SettingsCtrl() {
+    
+};
+
 function PricePerGalCtrl($scope, $http, $filter) {
     $http.get('data/fill-ups.json').
         then(function(data) {
@@ -79,6 +83,7 @@ function FuelListCtrl($scope, $http) {
 angular
     .module('app')
     .controller('DashboardCtrl', DashboardCtrl)
+    .controller('SettingsCtrl', SettingsCtrl)
     .controller('FuelListCtrl', FuelListCtrl)
     .controller('PricePerGalCtrl', PricePerGalCtrl)
     .controller('MilesPerGalCtrl', MilesPerGalCtrl)

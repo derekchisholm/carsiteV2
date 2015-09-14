@@ -16,6 +16,11 @@ function config($stateProvider, $urlRouterProvider) {
             url: "/index",
             templateUrl: "views/common/content.html",
         })
+        .state('index.settings', {
+            url: "/settings",
+            templateUrl: "views/settings.html",
+            data: { pageTitle: 'Settings view' }
+        })
         .state('index.dashboard', {
             url: "/dashboard",
             templateUrl: "views/dashboard.html",
