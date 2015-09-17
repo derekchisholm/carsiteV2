@@ -16,26 +16,26 @@ function config($stateProvider, $urlRouterProvider) {
             url: "/index",
             templateUrl: "views/common/content.html",
         })
-        .state('index.settings', {
-            url: "/settings",
-            templateUrl: "views/settings.html",
-            data: { pageTitle: 'Settings view' }
-        })
         .state('index.dashboard', {
             url: "/dashboard",
             templateUrl: "views/dashboard.html",
             data: { pageTitle: 'Dashboard view' }
         })
+        .state('fuel', {
+            abstract: "true",
+            url: "/fuel",
+            templateUrl: "views/common/content.html"
+        })
+        .state('fuel.vehicle', {
+            url: "/vehicle",
+            templateUrl: "/views/fuel.html",
+            data: { pageTitle: 'Fuel view' }
+        })
         .state('index.maintenance', {
             url: "/maintenance",
             templateUrl: "views/maintenance.html",
             data: { pageTitle: 'Maintenance view' }
-        })
-        .state('index.fuel', {
-            url: "/fuel",
-            templateUrl: "views/fuel.html",
-            data: { pageTitle: 'Fuel view' }
-        })
+        })        
         .state('index.performance', {
             url: "/performance",
             templateUrl: "views/performance.html",
@@ -45,6 +45,36 @@ function config($stateProvider, $urlRouterProvider) {
             url: "/badges",
             templateUrl: "views/badges.html",
             data: { pageTitle: 'Badges view' }
+        })
+        .state('settings', {
+            abstract: true,
+            url: "/settings",
+            templateUrl: "views/common/content.html",
+        })
+        .state('settings.main', {
+            url: "",
+            templateUrl: "views/settings.html",
+            data: { pageTitle: 'Settings' }
+        })
+        .state('settings.profile', {
+            url: "/profile",
+            templateUrl: "views/settings.profile.html",
+            data: { pageTitle: 'Profile' }
+        })
+        .state('settings.password', {
+            url: "/password",
+            templateUrl: "views/settings.password.html",
+            data: { pageTitle: 'Password' }
+        })
+        .state('settings.notifications', {
+            url: "/notifications",
+            templateUrl: "views/settings.notifications.html",
+            data: { pageTitle: 'Notifications' }
+        })
+        .state('settings.language', {
+            url: "/language",
+            templateUrl: "views/settings.language.html",
+            data: { pageTitle: 'Language' }
         })
 }
 angular
