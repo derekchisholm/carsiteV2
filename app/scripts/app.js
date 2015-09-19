@@ -7,6 +7,7 @@
         'ui.router',                    // Routing
         'ui.bootstrap',                 // Bootstrap
         'ui.footable',
-        'chart.js'
+        'chart.js',
+        'ncy-angular-breadcrumb'
     ])
 })();

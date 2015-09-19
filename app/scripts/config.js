@@ -6,8 +6,12 @@
  * Initial there are written stat for all view in theme.
  *
  */
-function config($stateProvider, $urlRouterProvider) {
+function config($stateProvider, $urlRouterProvider, $breadcrumbProvider) {
     $urlRouterProvider.otherwise("/index/dashboard");
+    $breadcrumbProvider.setOptions({
+        prefixStateName: 'index.dashboard',
+        includeAbstract: false
+    });
 
     $stateProvider
 
@@ -19,26 +23,33 @@ function config($stateProvider, $urlRouterProvider) {
         .state('index.dashboard', {
             url: "/dashboard",
             templateUrl: "views/dashboard.html",
-            data: { pageTitle: 'Dashboard view' }
+            data: { pageTitle: 'Dashboard view' },
+            ncyBreadcrumb: {
+                label: 'Home'
+            }
         })
         .state('fuel', {
-            abstract: "true",
+            abstract: true,
             url: "/fuel",
             templateUrl: "views/common/content.html"
         })
-        .state('fuel.vehicle', {
+        .state('fuel.dashboard', {
             url: "/vehicle",
-            templateUrl: "/views/fuel.html",
-            data: { pageTitle: 'Fuel view' }
+            templateUrl: "/views/dashboard.fuel.html",
+            data: { pageTitle: 'Fuel Dashboard' },
+            ncyBreadcrumb: {
+                label: 'Fuel Dashboard',
+                parent: 'fuel'
+            }
         })
         .state('index.maintenance', {
             url: "/maintenance",
-            templateUrl: "views/maintenance.html",
+            templateUrl: "views/dashboard.maintenance.html",
             data: { pageTitle: 'Maintenance view' }
         })        
         .state('index.performance', {
             url: "/performance",
-            templateUrl: "views/performance.html",
+            templateUrl: "views/dashboard.performance.html",
             data: { pageTitle: 'Performance view' }
         })
         .state('index.badges', {
@@ -49,16 +60,24 @@ function config($stateProvider, $urlRouterProvider) {
         .state('settings', {
             abstract: true,
             url: "/settings",
-            templateUrl: "views/common/content.html",
+            templateUrl: "views/common/content.html"
         })
         .state('settings.main', {
             url: "",
             templateUrl: "views/settings.html",
+            ncyBreadcrumb: {
+                label: 'Settings',
+                parent: 'index'
+            },
             data: { pageTitle: 'Settings' }
         })
         .state('settings.profile', {
             url: "/profile",
             templateUrl: "views/settings.profile.html",
+            ncyBreadcrumb: {
+                label: 'Profile',
+                parent: 'settings.main'
+            },
             data: { pageTitle: 'Profile' }
         })
         .state('settings.password', {
