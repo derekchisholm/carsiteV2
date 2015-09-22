@@ -1,0 +1,71 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>New Fuel Record</h2>
+        <div ncy-breadcrumb ></div>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <p>New Fuel Record</p>
+            </div>
+            <div class="ibox-content">
+                <form method="get" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Odometer</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control">
+                        </div>               
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2  control-label">Price $/gallon</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Volume</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Partial fill-up?</label>
+                        <div class="col-sm-10">
+                            <div><label><input icheck type="checkbox" ng-model="main.checkOne"></label></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Missed fill-ups?</label>
+                        <div class="col-sm-10">
+                            <div><label><input icheck type="checkbox" ng-model="main.check2"></label></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Vehicle</label>
+                        <div class="col-sm-10">
+                            <select class="form-control m-b" name="vehicle">
+                                <option value="G37">G37</option>
+                                <option value="WRX STI">WRX STI</option>
+                                <option value="Dope Jeep">Dope Jeep</option>
+                                <option value="Weak ass Civic">Weak ass Civic</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="fillUp_date">
+                        <label class="col-sm-2 control-label">Fill-up date</label>
+                        <div class="col-sm-10">
+                            <div class="input-group date">
+                                <input type="datetime" class="form-control" date-time ng-model="fillUpDate" view="date" auto-close="true">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>                        
+    </div>
+</div>

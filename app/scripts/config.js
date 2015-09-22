@@ -38,8 +38,17 @@ function config($stateProvider, $urlRouterProvider, $breadcrumbProvider) {
             templateUrl: "/views/dashboard.fuel.html",
             data: { pageTitle: 'Fuel Dashboard' },
             ncyBreadcrumb: {
-                label: 'Fuel Dashboard',
+                label: 'Fuel',
                 parent: 'fuel'
+            }
+        })
+        .state('fuel.new', {
+            url: "/new",
+            templateUrl: "/views/fuel.new.html",
+            data: { pageTitle: 'New fuel record' },
+            ncyBreadcrumb: {
+                label: 'New Record',
+                parent: 'fuel.dashboard'
             }
         })
         .state('index.maintenance', {

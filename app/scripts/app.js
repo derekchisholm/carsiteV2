@@ -8,6 +8,8 @@
         'ui.bootstrap',                 // Bootstrap
         'ui.footable',
         'chart.js',
-        'ncy-angular-breadcrumb'
+        'ncy-angular-breadcrumb',
+        'datePicker',
+        'angularMoment'
     ])
 })();
