@@ -12,15 +12,13 @@
         "paymentType": "credit",
         "fuel": [
                 {
-                       "category": "gasoline",
-                       "type": "premium",
-                       "octane": "91"
+                       "type": "gasoline",
+                       "grade": "Premium - 91"
                 }
         ],
         "station": [
                 {
                         "name": "Jacksons",
-                        "brand": "shell",
                         "address": "500 S Meadows Pkwy, Reno, NV 89509"
                 }
         ],
@@ -39,15 +37,13 @@
         "paymentType": "credit",
         "fuel": [
                 {
-                       "category": "gasoline",
-                       "type": "premium",
-                       "octane": "91"
+                       "type": "gasoline",
+                       "grade": "Premium - 91"
                 }
         ],
         "station": [
                 {
                         "name": "Jacksons",
-                        "brand": "shell",
                         "address": "500 S Meadows Pkwy, Reno, NV 89509"
                 }
         ],
@@ -66,15 +62,13 @@
         "paymentType": "credit",
         "fuel": [
                 {
-                       "category": "gasoline",
-                       "type": "premium",
-                       "octane": "91"
+                       "type": "gasoline",
+                       "grade": "Premium - 91"
                 }
         ],
         "station": [
                 {
                         "name": "Jacksons",
-                        "brand": "shell",
                         "address": "500 S Meadows Pkwy, Reno, NV 89509"
                 }
         ],
@@ -93,15 +87,13 @@
         "paymentType": "credit",
         "fuel": [
                 {
-                       "category": "gasoline",
-                       "type": "premium",
-                       "octane": "91"
+                       "type": "gasoline",
+                       "grade": "Premium - 91"
                 }
         ],
         "station": [
                 {
                         "name": "Jacksons",
-                        "brand": "shell",
                         "address": "500 S Meadows Pkwy, Reno, NV 89509"
                 }
         ],
@@ -120,15 +112,13 @@
         "paymentType": "credit",
         "fuel": [
                 {
-                       "category": "gasoline",
-                       "type": "premium",
-                       "octane": "91"
+                       "type": "gasoline",
+                       "grade": "Premium - 91"
                 }
         ],
         "station": [
                 {
                         "name": "Jacksons",
-                        "brand": "shell",
                         "address": "500 S Meadows Pkwy, Reno, NV 89509"
                 }
         ],

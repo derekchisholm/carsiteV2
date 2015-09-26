@@ -66,7 +66,7 @@ function MilesPerGalCtrl($scope, $http, $filter) {
     });
 }
 
-function FuelListCtrl($scope, $http) {
+function FuelListCtrl($scope, $http, moment) {
     $http.get('data/fill-ups.json').
         then(function(data) {
             $scope.fillUps = data.data;
@@ -75,8 +75,23 @@ function FuelListCtrl($scope, $http) {
                 price = $scope.fillUps[i].price.toFixed(2);
                 volume = $scope.fillUps[i].volume.toFixed(2);
                 cost = price * volume;
-                $scope.fillUps[i].cost = cost.toFixed(2);                
+                $scope.fillUps[i].cost = cost.toFixed(2);
+                $scope.fillUps[i].dateTime = moment($scope.fillUps[i].dateTime).format("M/d/YYYY");
             }
+    });
+};
+
+function NewFillUpController($scope, $http) {
+    $http.get('data/fill-ups.json').
+        then(function(data) {
+            $scope.fillUps = data.data;
+            
+            $scope.save = function() {
+                $http.post('data/fill-ups.json', $scope.fillUps).
+                    then(function(data) {
+                        
+                });
+            };
     });
 };
 
@@ -87,3 +102,4 @@ angular
     .controller('FuelListCtrl', FuelListCtrl)
     .controller('PricePerGalCtrl', PricePerGalCtrl)
     .controller('MilesPerGalCtrl', MilesPerGalCtrl)
+    .controller('NewFillUpController', NewFillUpController)
