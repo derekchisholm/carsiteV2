@@ -6,12 +6,18 @@
  * Initial there are written stat for all view in theme.
  *
  */
-function config($stateProvider, $urlRouterProvider, $breadcrumbProvider) {
+function config($stateProvider, $urlRouterProvider, $breadcrumbProvider, $httpProvider) {
     $urlRouterProvider.otherwise("/index/dashboard");
     $breadcrumbProvider.setOptions({
         prefixStateName: 'index.dashboard',
         includeAbstract: false
     });
+    
+    delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    $httpProvider.defaults.useXDomain = true;
+    $httpProvider.defaults.withCredentials = true;
+    $httpProvider.defaults.headers.common["Accept"] = "application/json";
+    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
 
     $stateProvider
 

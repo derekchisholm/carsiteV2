@@ -19,21 +19,21 @@ function SettingsCtrl() {
 };
 
 function PricePerGalCtrl($scope, $http, $filter) {
-    $http.get('data/fill-ups.json').
+    $http.get('http://api.carsite.local/fillups').
         then(function(data) {
-            $scope.fillUps = data.data;
+            $scope.fillUps = data.data._embedded.fillups;
             
             $scope.labels = [];
             $scope.seriesA = [];
             $scope.dataSets = [];
             
             for (i = 0; i < $scope.fillUps.length; i++) {
-                date = new Date($scope.fillUps[i].dateTime);
+                date = new Date($scope.fillUps[i].date);
                 date = $filter("date")(date, "shortDate");
-                price = $scope.fillUps[i].price.toFixed(2);
+                price = parseFloat($scope.fillUps[i].price);
                 
                 $scope.labels.push(date);
-                $scope.seriesA.push(price);
+                $scope.seriesA.push(price.toFixed(3));
             }
             
             $scope.dataSets.push($scope.seriesA);
@@ -42,17 +42,17 @@ function PricePerGalCtrl($scope, $http, $filter) {
 }
 
 function MilesPerGalCtrl($scope, $http, $filter) {
-    $http.get('data/fill-ups.json').
+    $http.get('http://api.carsite.local/fillups').
         then(function(data) {
-            $scope.fillUps = data.data;
+            $scope.fillUps = data.data._embedded.fillups;
             
             $scope.labels = [];
             $scope.seriesA = [];
             $scope.dataSets = [];
             
             for (i = 0; i < $scope.fillUps.length; i++) {
-                date = new Date($scope.fillUps[i].dateTime);
-                date = $filter("date")(date, "shortDate");
+                date = new Date($scope.fillUps[i].date);
+                date = moment(date).format('l');
                 
                 distance = (i > 0) ? $scope.fillUps[i].odometer - $scope.fillUps[i - 1].odometer : 0;
                 mpg = (i > 0) ? distance / $scope.fillUps[i].volume : 0;
@@ -67,16 +67,16 @@ function MilesPerGalCtrl($scope, $http, $filter) {
 }
 
 function FuelListCtrl($scope, $http, moment) {
-    $http.get('data/fill-ups.json').
+    $http.get('http://api.carsite.local/fillups').
         then(function(data) {
-            $scope.fillUps = data.data;
+            $scope.fillUps = data.data._embedded.fillups;
             
             for (i = 0; i < $scope.fillUps.length; i++) {
-                price = $scope.fillUps[i].price.toFixed(2);
-                volume = $scope.fillUps[i].volume.toFixed(2);
-                cost = price * volume;
-                $scope.fillUps[i].cost = cost.toFixed(2);
-                $scope.fillUps[i].dateTime = moment($scope.fillUps[i].dateTime).format("M/d/YYYY");
+                $scope.fillUps[i].price = parseFloat($scope.fillUps[i].price).toFixed(2);
+                $scope.fillUps[i].volume = parseFloat($scope.fillUps[i].volume).toFixed(2);
+                $scope.fillUps[i].cost = $scope.fillUps[i].price * $scope.fillUps[i].volume;
+                $scope.fillUps[i].cost = $scope.fillUps[i].cost.toFixed(2);
+                $scope.fillUps[i].date = moment($scope.fillUps[i].date).format('l');
             }
     });
 };
