@@ -47,14 +47,13 @@
                     <table class="footable table table-striped toggle-arrow-tiny">
                         <thead>
                             <tr>
-                                <th data-toggle="true">Id</th>
+                                <th data-toggle="true">Date</th>
                                 <th>Odometer</th>
                                 <th>Price $/gal</th>
                                 <th>Volume</th>
                                 <th>Total Cost</th>
                                 <th data-hide="all">Partial Fill-up?</th>
                                 <th data-hide="all">Missed Fill-ups?</th>
-                                <th>Date</th>
                                 <th data-hide="all">Payment Type</th>
                                 <th>Fuel</th>
                                 <th data-hide="all">Station</th>
@@ -63,14 +62,13 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="fillUp in fillUps" footable-complete>
-                                <td>{{fillUp.id}}</td>
+                                <td>{{fillUp.date}}</td>
                                 <td>{{fillUp.odometer}}</td>
                                 <td>{{fillUp.price}}</td>
                                 <td>{{fillUp.volume}}</td>
                                 <td>{{fillUp.cost}}</td>
                                 <td>{{fillUp.partial}}</td>
                                 <td>{{fillUp.missed}}</td>
-                                <td>{{fillUp.date}}</td>
                                 <td>{{fillUp.payment_type}}</td>
                                 <td>{{fillUp.fuel_grade}}</td>
                                 <td>{{fillUp.station_name}}</td>

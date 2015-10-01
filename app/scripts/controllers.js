@@ -74,25 +74,30 @@ function FuelListCtrl($scope, $http, moment) {
             for (i = 0; i < $scope.fillUps.length; i++) {
                 $scope.fillUps[i].price = parseFloat($scope.fillUps[i].price).toFixed(2);
                 $scope.fillUps[i].volume = parseFloat($scope.fillUps[i].volume).toFixed(2);
-                $scope.fillUps[i].cost = $scope.fillUps[i].price * $scope.fillUps[i].volume;
-                $scope.fillUps[i].cost = $scope.fillUps[i].cost.toFixed(2);
                 $scope.fillUps[i].date = moment($scope.fillUps[i].date).format('l');
             }
     });
 };
 
-function NewFillUpController($scope, $http) {
-    $http.get('data/fill-ups.json').
-        then(function(data) {
-            $scope.fillUps = data.data;
-            
-            $scope.save = function() {
-                $http.post('data/fill-ups.json', $scope.fillUps).
-                    then(function(data) {
-                        
-                });
-            };
-    });
+function NewFillUpController($scope, $http, $location) {
+    $scope.formData = {};
+    
+    $scope.create = function() {
+        console.log(this.formData);
+    };
+    
+    $scope.cancel = function() {
+        $location.path('/fuel/vehicle');
+    };
+    
+    $scope.calcCost = function() {
+        if ($scope.formData.price > 0 && $scope.formData.volume > 0) {
+            price = parseFloat($scope.formData.price).toFixed(2);
+            volume = parseFloat($scope.formData.volume).toFixed(2);
+            cost = price * volume;
+            $scope.formData.cost = cost.toFixed(2);
+        }
+    };
 };
 
 angular
