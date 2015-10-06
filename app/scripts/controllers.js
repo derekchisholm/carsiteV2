@@ -1,110 +1,139 @@
-/**
- * INSPINIA - Responsive Admin Theme
- *
- */
-
-/**
- * DashboardCtrl - controller
- */
-function DashboardCtrl() {
-
-    this.userName = 'Example user';
-    this.helloText = 'Welcome in SeedProject';
-    this.descriptionText = 'It is an application skeleton for a typical AngularJS web app. You can use it to quickly bootstrap your angular webapp projects and dev environment for these projects.';
-
-};
-
-function SettingsCtrl() {
+(function () {
+    'use strict';
     
-};
-
-function PricePerGalCtrl($scope, $http, $filter) {
-    $http.get('http://api.carsite.local/fillups').
-        then(function(data) {
-            $scope.fillUps = data.data._embedded.fillups;
-            
-            $scope.labels = [];
-            $scope.seriesA = [];
-            $scope.dataSets = [];
-            
-            for (i = 0; i < $scope.fillUps.length; i++) {
-                date = new Date($scope.fillUps[i].date);
-                date = $filter("date")(date, "shortDate");
-                price = parseFloat($scope.fillUps[i].price);
+    angular
+        .module('app')
+        .controller('DashboardController', DashboardController)
+        .controller('FuelListController', FuelListController)
+        .controller('MilesPerGalController', MilesPerGalController)
+        .controller('NewFillUpController', NewFillUpController)
+        .controller('PricePerGalController', PricePerGalController)
+        .controller('SettingsController', SettingsController);
+    
+    DashboardController.$inject = [];
+    FuelListController.$inject = ['$http', 'moment'];
+    MilesPerGalController.$inject = ['$http'];
+    NewFillUpController.$inject = ['$http', '$location'];
+    PricePerGalController.$inject = ['$http', '$filter'];
+    SettingsController.$inject = [];
+    
+    function DashboardController() {
+        var vm = this;
+        
+        vm.userName = 'Example user';
+        vm.helloText = 'Welcome in SeedProject';
+        vm.descriptionText = 'It is an application skeleton for a typical AngularJS web app. You can use it to quickly bootstrap your angular webapp projects and dev environment for these projects.';
+    }
+    
+    function FuelListController($http, moment) {
+        var vm = this;
+        
+        $http.get('http://api.carsite.local/fillups').
+            then(function(data) {
+                vm.fillUps = data.data._embedded.fillups;
                 
-                $scope.labels.push(date);
-                $scope.seriesA.push(price.toFixed(3));
-            }
-            
-            $scope.dataSets.push($scope.seriesA);
-            $scope.data = $scope.dataSets;
-    });
-}
+                var i = 0;
 
-function MilesPerGalCtrl($scope, $http, $filter) {
-    $http.get('http://api.carsite.local/fillups').
-        then(function(data) {
-            $scope.fillUps = data.data._embedded.fillups;
-            
-            $scope.labels = [];
-            $scope.seriesA = [];
-            $scope.dataSets = [];
-            
-            for (i = 0; i < $scope.fillUps.length; i++) {
-                date = new Date($scope.fillUps[i].date);
-                date = moment(date).format('l');
+                for (i = 0; i < vm.fillUps.length; i++) {
+                    vm.fillUps[i].price = parseFloat(vm.fillUps[i].price).toFixed(2);
+                    vm.fillUps[i].volume = parseFloat(vm.fillUps[i].volume).toFixed(2);
+                    vm.fillUps[i].date = moment(vm.fillUps[i].date).format('l');
+                }
+        });
+    }
+    
+    function MilesPerGalController($http) {
+        var vm = this;
+        
+        $http.get('http://api.carsite.local/fillups').
+            then(function(data) {
+                vm.fillUps = data.data._embedded.fillups;
+
+                vm.labels = [];
+                vm.seriesA = [];
+                vm.dataSets = [];
                 
-                distance = (i > 0) ? $scope.fillUps[i].odometer - $scope.fillUps[i - 1].odometer : 0;
-                mpg = (i > 0) ? distance / $scope.fillUps[i].volume : 0;
+                var i = 0;
+                var date = new Date;
+                var distance;
+                var mpg;
+
+                for (i = 0; i < vm.fillUps.length; i++) {
+                    date = new Date(vm.fillUps[i].date);
+                    date = moment(date).format('l');
+
+                    distance = (i > 0) ? vm.fillUps[i].odometer - vm.fillUps[i - 1].odometer : 0;
+                    mpg = (i > 0) ? distance / vm.fillUps[i].volume : 0;
+
+                    vm.labels.push(date);
+                    vm.seriesA.push(mpg.toFixed(1));
+                }
+
+                vm.dataSets.push(vm.seriesA);
+                vm.data = vm.dataSets;
+        });
+    }
+    
+    function NewFillUpController($http, $location) {
+        var vm = this;
+        
+        vm.create = create;
+        vm.cancel = cancel;
+        vm.calcCost = calcCost;
+        
+        vm.formData = {};
+
+        function create() {
+            console.log(vm.formData);
+        };
+
+        function cancel() {
+            $location.path('/fuel/vehicle');
+        };
+
+        function calcCost() {
+            var price;
+            var volume;
+            var cost;
+            
+            if (vm.formData.price > 0 && vm.formData.volume > 0) {
+                price = parseFloat(vm.formData.price).toFixed(2);
+                volume = parseFloat(vm.formData.volume).toFixed(2);
+                cost = price * volume;
+                vm.formData.cost = cost.toFixed(2);
+            }
+        };
+    }
+    
+    function PricePerGalController($http, $filter) {
+        var vm = this;
+        
+        $http.get('http://api.carsite.local/fillups').
+            then(function(data) {
+                vm.fillUps = data.data._embedded.fillups;
+
+                vm.labels = [];
+                vm.seriesA = [];
+                vm.dataSets = [];
                 
-                $scope.labels.push(date);
-                $scope.seriesA.push(mpg.toFixed(1));
-            }
-            
-            $scope.dataSets.push($scope.seriesA);
-            $scope.data = $scope.dataSets;
-    });
-}
+                var i = 0;
+                var date = new Date();
+                var price;
+                
+                for (i = 0; i < vm.fillUps.length; i++) {
+                    date = new Date(vm.fillUps[i].date);
+                    date = $filter("date")(date, "shortDate");
+                    price = parseFloat(vm.fillUps[i].price);
 
-function FuelListCtrl($scope, $http, moment) {
-    $http.get('http://api.carsite.local/fillups').
-        then(function(data) {
-            $scope.fillUps = data.data._embedded.fillups;
-            
-            for (i = 0; i < $scope.fillUps.length; i++) {
-                $scope.fillUps[i].price = parseFloat($scope.fillUps[i].price).toFixed(2);
-                $scope.fillUps[i].volume = parseFloat($scope.fillUps[i].volume).toFixed(2);
-                $scope.fillUps[i].date = moment($scope.fillUps[i].date).format('l');
-            }
-    });
-};
+                    vm.labels.push(date);
+                    vm.seriesA.push(price.toFixed(3));
+                }
 
-function NewFillUpController($scope, $http, $location) {
-    $scope.formData = {};
+                vm.dataSets.push(vm.seriesA);
+                vm.data = vm.dataSets;
+        });
+    }
     
-    $scope.create = function() {
-        console.log(this.formData);
-    };
-    
-    $scope.cancel = function() {
-        $location.path('/fuel/vehicle');
-    };
-    
-    $scope.calcCost = function() {
-        if ($scope.formData.price > 0 && $scope.formData.volume > 0) {
-            price = parseFloat($scope.formData.price).toFixed(2);
-            volume = parseFloat($scope.formData.volume).toFixed(2);
-            cost = price * volume;
-            $scope.formData.cost = cost.toFixed(2);
-        }
-    };
-};
-
-angular
-    .module('app')
-    .controller('DashboardCtrl', DashboardCtrl)
-    .controller('SettingsCtrl', SettingsCtrl)
-    .controller('FuelListCtrl', FuelListCtrl)
-    .controller('PricePerGalCtrl', PricePerGalCtrl)
-    .controller('MilesPerGalCtrl', MilesPerGalCtrl)
-    .controller('NewFillUpController', NewFillUpController)
+    function SettingsController() {
+    }   
+})();

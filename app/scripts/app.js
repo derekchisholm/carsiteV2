@@ -1,8 +1,6 @@
-/**
- * INSPINIA - Responsive Admin Theme
- *
- */
 (function () {
+    'use strict';
+    
     angular.module('app', [
         'ui.router',                    // Routing
         'ui.bootstrap',                 // Bootstrap
@@ -11,5 +9,5 @@
         'ncy-angular-breadcrumb',
         'datePicker',
         'angularMoment'
-    ])
+    ]);
 })();

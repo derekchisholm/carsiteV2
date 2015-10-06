@@ -13,12 +13,12 @@
                 <p>New Fuel Record</p>
             </div>
             <div class="ibox-content">
-                <form ng-controller="NewFillUpController" ng-submit="create()" class="form-horizontal">
+                <form ng-controller="NewFillUpController as nf" ng-submit="create()" class="form-horizontal">
                     <div class="form-group" id="fillUp_date">
                         <label class="col-sm-2 control-label">Fill-up date</label>
                         <div class="col-sm-10">
                             <div class="input-group date">
-                                <input type="datetime" class="form-control" date-time view="date" min-view="date" auto-close="true" format="M/d/yyyy"  ng-model="formData.date">
+                                <input type="datetime" class="form-control" date-time view="date" min-view="date" auto-close="true" format="M/d/yyyy"  ng-model="nf.formData.date">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Vehicle</label>
                         <div class="col-sm-10">
-                            <select class="form-control m-b" ng-model="formData.vehicle">
+                            <select class="form-control m-b" ng-model="nf.formData.vehicle">
                                 <option value="G37">G37</option>
                                 <option value="WRX STI">WRX STI</option>
                                 <option value="Dope Jeep">Dope Jeep</option>
@@ -38,7 +38,7 @@
                         <label class="col-sm-2 control-label">Odometer</label>
                         <div class="col-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control"  ng-model="formData.odometer">
+                                <input type="text" class="form-control"  ng-model="nf.formData.odometer">
                                 <span class="input-group-addon">mi</span>
                             </div>
                         </div>               
@@ -46,7 +46,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Volume</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" ng-blur="calcCost()" ng-model="formData.volume">
+                            <input type="text" class="form-control" ng-blur="nf.calcCost()" ng-model="nf.formData.volume">
                         </div>
                     </div>
                     <div class="form-group">
@@ -54,7 +54,7 @@
                         <div class="col-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input type="text" class="form-control" ng-blur="calcCost()" ng-model="formData.price">
+                                <input type="text" class="form-control" ng-blur="nf.calcCost()" ng-model="nf.formData.price">
                             </div>
                         </div>
                     </div>
@@ -63,14 +63,14 @@
                         <div class="col-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input type="text" disabled="" class="form-control" name="cost" ng-model="formData.cost">
+                                <input type="text" disabled="" class="form-control" name="cost" ng-model="nf.formData.cost">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Payment Type</label>
                         <div class="col-sm-10">
-                            <select class="form-control m-b" ng-model="formData.payment_type">
+                            <select class="form-control m-b" ng-model="nf.formData.payment_type">
                                 <option value="Cash">Cash</option>
                                 <option value="Credit">Credit</option>
                                 <option value="GasCard">Gas Card</option>
@@ -81,13 +81,13 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Partial fill-up?</label>
                         <div class="col-sm-10">
-                            <div><label><input icheck type="checkbox" ng-model="formData.partial"></label></div>
+                            <div><label><input icheck type="checkbox" ng-model="nf.formData.partial"></label></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Missed fill-ups?</label>
                         <div class="col-sm-10">
-                            <div><label><input icheck type="checkbox" ng-model="formData.missed"></label></div>
+                            <div><label><input icheck type="checkbox" ng-model="nf.formData.missed"></label></div>
                         </div>
                     </div>
                     <div class="hr-line-dashed"></div>
@@ -107,7 +107,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Fuel Grade</label>
                         <div class="col-sm-10">
-                            <select class="form-control m-b" ng-model="formData.fuel_grade">
+                            <select class="form-control m-b" ng-model="nf.formData.fuel_grade">
                                 <option value="Regular - 85">Regular - 85</option>
                                 <option value="Mid - 89">Mid - 89</option>
                                 <option value="Premium - 91">Premium - 91</option>
@@ -118,26 +118,26 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Gas Station</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" ng-model="formData.stationName">
+                            <input type="text" class="form-control" ng-model="nf.formData.stationName">
                         </div>               
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Address</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" ng-model="formData.stationAddress">
+                            <input type="text" class="form-control" ng-model="nf.formData.stationAddress">
                         </div>               
                     </div>
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Note</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" ng-model="formData.note">
+                            <input type="text" class="form-control" ng-model="nf.formData.note">
                         </div>               
                     </div>
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <div class="col-sm-10 pull-right">
-                            <button type="button" ng-click="cancel()" class="btn btn-w-m btn-white">Cancel</button>
+                            <button type="button" ng-click="nf.cancel()" class="btn btn-w-m btn-white">Cancel</button>
                             <button type="submit" class="btn btn-w-m btn-primary">Save record</button>
                         </div>
                     </div>
