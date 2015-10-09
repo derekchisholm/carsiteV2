@@ -84,7 +84,14 @@
         vm.formData = {};
 
         function create() {
-            console.log(vm.formData);
+            vm.formData.date = vm.formData.date.toLocaleString();
+            
+            $http.post('http://api.carsite.local/fillups', vm.formData).
+                then(function(data, status, headers) {
+                    $location.path('/fuel/vehicle');
+            }, function (data) {
+                    alert(data.data.detail);
+            });
         };
 
         function cancel() {
