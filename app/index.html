@@ -19,20 +19,20 @@
     <!-- Google Open Sans -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
-    <!-- build:css(.) styles/vendor.css -->
+    <!-- build:css(app) styles/vendor.css -->
     <!-- bower:css -->
-    <link href="bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet"/>
-    <link href="bower_components/footable/css/footable.core.css" rel="stylesheet">
-    <link href="bower_components/angular-chart.js/dist/angular-chart.css" rel="stylesheet"/>
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="styles/plugins/icheck/custom.css" rel="stylesheet"/>
-    <link href="bower_components/angular-datepicker/dist/angular-datepicker.css" rel="stylesheet"/>
-    <link href="styles/animate.css" rel="stylesheet">
+    <link href="vendor/fontawesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="vendor/footable/css/footable.core.css" rel="stylesheet">
+    <link href="vendor/angular-chart.js/dist/angular-chart.css" rel="stylesheet"/>
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/angular-datepicker/dist/angular-datepicker.css" rel="stylesheet"/>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:css({.tmp,app}) styles/style.css -->
     <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/plugins/icheck/custom.css" rel="stylesheet"/>
+    <link href="styles/animate.css" rel="stylesheet">
     <!-- endbuild -->
 
 
@@ -43,59 +43,59 @@
 <!-- Main controller with serveral data used in Inspinia theme on diferent view -->
 <body class="md-skin">
 
-<!-- Main view  -->
-<div ui-view></div>
+    <!-- Main view  -->
+    <div ui-view></div>
 
 
-<!-- build:js(.) scripts/vendor.js -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
-<script src="bower_components/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="bower_components/PACE/pace.min.js"></script>
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-<script src="bower_components/footable/js/footable.js"></script>
-<script src="bower_components/angular-footable/dist/angular-footable.js"></script>
-<script src="bower_components/Chart.js/Chart.js"></script>
-<script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
-<script src="bower_components/angular-breadcrumb/dist/angular-breadcrumb.js"></script>
-<script src="scripts/plugins/icheck/icheck.min.js"></script>
-<script src="bower_components/moment/moment.js"></script>
-<script src="bower_components/angular-moment/angular-moment.js"></script>
-<script src="bower_components/angular-datepicker/dist/angular-datepicker.js"></script>
+    <!-- build:js(app) scripts/vendor.js -->
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <script src="vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="vendor/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="vendor/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="vendor/PACE/pace.min.js"></script>
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="vendor/footable/js/footable.js"></script>
+    <script src="vendor/angular-footable/dist/angular-footable.js"></script>
+    <script src="vendor/Chart.js/Chart.js"></script>
+    <script src="vendor/angular-chart.js/dist/angular-chart.js"></script>
+    <script src="vendor/angular-breadcrumb/dist/angular-breadcrumb.js"></script>
+    <script src="vendor/moment/moment.js"></script>
+    <script src="vendor/angular-moment/angular-moment.js"></script>
+    <script src="vendor/angular-datepicker/dist/angular-datepicker.js"></script>
 
-<!-- Angular Dependiences -->
-<!--                      -->
-<!--                      -->
-<!--                      -->
+    <!-- Angular Dependiences -->
+    <!--                      -->
+    <!--                      -->
+    <!--                      -->
 
-<!-- endbuild -->
+    <!-- endbuild -->
 
-<!-- build:js({.tmp,app}) scripts/scripts.js -->
-<!-- Custom and plugin javascript -->
-<script src="scripts/carsite.js"></script>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <!-- Custom and plugin javascript -->
+    <script src="scripts/carsite.js"></script>
+    <script src="scripts/plugins/icheck/icheck.min.js"></script>
 
-<!-- Anglar App Script -->
-<script src="scripts/app.js"></script>
-<script src="scripts/config.js"></script>
-<script src="scripts/directives/footableCompleteDirective.js"></script>
-<script src="scripts/directives/iboxToolsDirective.js"></script>
-<script src="scripts/directives/iboxToolsFullScreenDirective.js"></script>
-<script src="scripts/directives/icheckDirective.js"></script>
-<script src="scripts/directives/minimalizeSidebarDirective.js"></script>
-<script src="scripts/directives/pageTitleDirective.js"></script>
-<script src="scripts/directives/sideNavigationDirective.js"></script>
-<script src="scripts/controllers/dashboardController.js"></script>
-<script src="scripts/controllers/fuelListController.js"></script>
-<script src="scripts/controllers/newFillupController.js"></script>
-<script src="scripts/controllers/pricePerGallonController.js"></script>
-<script src="scripts/controllers/milesPerGallonController.js"></script>
-<script src="scripts/controllers/maintenanceController.js"></script>
-<script src="scripts/controllers/settingsController.js"></script>
-<!-- endbuild -->
+    <!-- Anglar App Script -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/config.js"></script>
+    <script src="scripts/directives/footableCompleteDirective.js"></script>
+    <script src="scripts/directives/iboxToolsDirective.js"></script>
+    <script src="scripts/directives/iboxToolsFullScreenDirective.js"></script>
+    <script src="scripts/directives/icheckDirective.js"></script>
+    <script src="scripts/directives/minimalizeSidebarDirective.js"></script>
+    <script src="scripts/directives/pageTitleDirective.js"></script>
+    <script src="scripts/directives/sideNavigationDirective.js"></script>
+    <script src="scripts/controllers/dashboardController.js"></script>
+    <script src="scripts/controllers/fuelListController.js"></script>
+    <script src="scripts/controllers/newFillupController.js"></script>
+    <script src="scripts/controllers/pricePerGallonController.js"></script>
+    <script src="scripts/controllers/milesPerGallonController.js"></script>
+    <script src="scripts/controllers/maintenanceController.js"></script>
+    <script src="scripts/controllers/settingsController.js"></script>
+    <!-- endbuild -->
 
 </body>
 </html>

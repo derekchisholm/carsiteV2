@@ -15,6 +15,9 @@ module.exports = function (grunt) {
 
     // Grunt configuration
     grunt.initConfig({
+        
+        // Grunt settings file
+        pkg: grunt.file.readJSON('package.json'),
 
         // Project settings
         inspinia: appConfig,
@@ -92,6 +95,7 @@ module.exports = function (grunt) {
         // And string-injection based syntax is: ['$scope', '$rootScope', '$location', '$http', function exampleCtrl ($scope, $rootScope, $location, $http){}]
         uglify: {
             options: {
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
                 mangle: false
             }
         },
@@ -124,7 +128,7 @@ module.exports = function (grunt) {
                             '*.html',
                             'views/{,*/}*.html',
                             'styles/patterns/*.*',
-                            'img/{,*/}*.*'
+                            'images/{,*/}*.*'
                         ]
                     },
                     {
@@ -209,6 +213,7 @@ module.exports = function (grunt) {
         'useminPrepare',
         'concat',
         'copy:dist',
+        'uglify',
         'cssmin',
         'filerev',
         'usemin',

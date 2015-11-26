@@ -1,7 +1,7 @@
 {
-  "name": "INSPINIA",
-  "version": "2.3.0",
-  "description": "INSPINIA - Responsive Admin Theme",
+  "name": "CarSite",
+  "version": "1.0",
+  "description": "CarSite - The place for tracking your car stuff",
   "dependencies": {
     "grunt": "^0.4.5"
   },

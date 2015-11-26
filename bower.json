@@ -31,6 +31,6 @@
     "angular-datepicker": "https://github.com/g00fy-/angular-datepicker.git#~1.0.3"
   },
   "resolutions": {
-      "angular": "~1.4.x"
+    "angular": "~1.4.x"
   }
 }
