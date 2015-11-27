@@ -1,27 +1,26 @@
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
-        <div class="col-lg-12">
-            <div class="text-center m-t-lg">
-                <h1>
-                    Simple example of second view
-                </h1>
-                <small>Configure in config.js as minor state.</small>
-            </div>
-            
-            <div class="ibox-content">
+        <div class="col-lg-12"> 
+            <div calss="ibox float-e-margins">
+                <div class="ibox-title">
+                    <div>
+                        <h5>Maintenance records - G37</h5>
+                        <div class="ibox-tools">
+                            <a ui-sref="fuel.new" class="btn btn-primary btn-xs">Add maintenance record</a>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="ibox-content">
                     <table class="footable table table-striped toggle-arrow-tiny">
                         <thead>
                             <tr>
                                 <th data-toggle="true">Date</th>
                                 <th>Odometer</th>
-                                <th>Price $/gal</th>
-                                <th>Volume</th>
-                                <th>Total Cost</th>
-                                <th data-hide="all">Partial Fill-up?</th>
-                                <th data-hide="all">Missed Fill-ups?</th>
+                                <th>Invoice Total</th>
+                                <th>Service Writer</th>
+                                <th>Service Location</th>
+                                <th data-hide="all">Service Location Address</th>
                                 <th data-hide="all">Payment Type</th>
-                                <th>Fuel</th>
-                                <th data-hide="all">Station</th>
                                 <th data-hide="all">Note</th>
                             </tr>
                         </thead>
@@ -42,6 +41,7 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
         </div>
     </div>
 </div>
