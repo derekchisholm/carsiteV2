@@ -27,7 +27,7 @@
             .state('index', {
                 abstract: true,
                 url: "/index",
-                templateUrl: "views/common/content.html",
+                templateUrl: "views/common/content.html"
             })
             .state('index.dashboard', {
                 url: "/dashboard",
@@ -112,6 +112,16 @@
                 url: "/language",
                 templateUrl: "views/settings.language.html",
                 data: { pageTitle: 'Language' }
+            })
+            .state('register', {
+                url: "/register",
+                templateUrl: "register.html",
+                data: { pageTitle: 'Register' }
+            })
+            .state('login', {
+                url: "/login",
+                templateUrl: "login.html",
+                data: { pageTitle: 'Login' }
             });
     }
     
