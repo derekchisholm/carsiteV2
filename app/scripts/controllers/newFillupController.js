@@ -19,6 +19,18 @@
         function create() {
             vm.formData.date = vm.formData.date.toLocaleString();
             
+            if($('[name="partialCheck"]').prop('checked', false)){
+                vm.formData.partial = 'N';
+            } else {
+                vm.formData.partial = 'Y';
+            }
+            
+            if($('[name="missedCheck"]').prop('checked', false)){
+                vm.formData.missed = 'N';
+            } else {
+                vm.formData.missed = 'Y';
+            }
+            
             $http.post('http://api.carsite.local/fillups', vm.formData).
                 then(function(data, status, headers) {
                     $location.path('/fuel/vehicle');
@@ -37,8 +49,8 @@
             var cost;
             
             if (vm.formData.price > 0 && vm.formData.volume > 0) {
-                price = parseFloat(vm.formData.price).toFixed(2);
-                volume = parseFloat(vm.formData.volume).toFixed(2);
+                price = parseFloat(vm.formData.price);
+                volume = parseFloat(vm.formData.volume);
                 cost = price * volume;
                 vm.formData.cost = cost.toFixed(2);
             }
