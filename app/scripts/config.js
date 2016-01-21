@@ -6,10 +6,15 @@
         .config(config)
         .run(run);
 
-    config.$inject = ['$stateProvider', '$urlRouterProvider', '$breadcrumbProvider', '$httpProvider'];
-    run.$inject = ['$rootScope', '$state'];
+    config.$inject = ['$stateProvider', '$urlRouterProvider', '$breadcrumbProvider', '$httpProvider', 'authProvider'];
+    run.$inject = ['$rootScope', '$state', 'auth'];
     
-    function config($stateProvider, $urlRouterProvider, $breadcrumbProvider, $httpProvider) {
+    function config($stateProvider, $urlRouterProvider, $breadcrumbProvider, $httpProvider, authProvider) {
+        authProvider.init({
+            domain: 'carsite.auth0.com',
+            clientID: 'vY05hK8NooyrP3s2aNG05X3c2UbaAwNW'
+        });
+        
         $urlRouterProvider.otherwise("/index/dashboard");
         $breadcrumbProvider.setOptions({
             prefixStateName: 'index.dashboard',
@@ -125,7 +130,8 @@
             });
     }
     
-    function run($rootScope, $state) {
+    function run($rootScope, $state, auth) {
         $rootScope.$state = $state;
+        auth.hookEvents();
     }
 })();
