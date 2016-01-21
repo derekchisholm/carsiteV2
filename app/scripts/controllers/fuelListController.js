@@ -7,7 +7,7 @@
 
     FuelListController.$inject = ['$http', 'moment'];
 
-function FuelListController($http, moment) {
+    function FuelListController($http, moment) {
         var vm = this;
         
         $http.get('http://api.carsite.local/fillups').
