@@ -11,18 +11,32 @@
         var vm = this;
         
         vm.submit = submit;
+        vm.username = '';
+        vm.password = '';
+        
+        function onLoginSuccess(profile, token) {
+            store.set('profile', profile);
+            store.set('token', token);
+            $location.path('/');
+            vm.loading = false;
+        }
+        
+        function onLoginFailed() {
+            vm.message.text = 'invalid credentials';
+            vm.loading = false;
+        }
         
         function submit() {
-            console.log("Made it into the submit function");
-            auth.signin({}, function (profile, token) {
-                // Success callback
-                store.set('profile', profile);
-                store.set('token', token);
-                $location.path('/fuel/vehicle');
-            }, function (error) {
-                // Error callback
-                console.log("There was an error logging in", error);
-            });
+            vm.loading = true;
+            auth.signin({
+                connection: 'Username-Password-Authentication',
+                username: vm.username,
+                password: vm.password,
+                authParams: {
+                    scope: 'openid name email'
+                }
+                
+            }, onLoginSuccess, onLoginFailed);
         };
     }
     

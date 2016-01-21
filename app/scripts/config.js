@@ -121,12 +121,12 @@
             })
             .state('register', {
                 url: "/register",
-                templateUrl: "register.html",
+                templateUrl: "views/register.html",
                 data: { pageTitle: 'Register' }
             })
             .state('login', {
                 url: "/login",
-                templateUrl: "login.html",
+                templateUrl: "views/login.html",
                 data: { pageTitle: 'Login' }
             });
     }
