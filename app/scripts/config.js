@@ -12,7 +12,8 @@
     function config($stateProvider, $urlRouterProvider, $breadcrumbProvider, $httpProvider, authProvider) {
         authProvider.init({
             domain: 'carsite.auth0.com',
-            clientID: 'vY05hK8NooyrP3s2aNG05X3c2UbaAwNW'
+            clientID: 'vY05hK8NooyrP3s2aNG05X3c2UbaAwNW',
+            loginUrl: '/login'
         });
         
         $urlRouterProvider.otherwise("/index/dashboard");

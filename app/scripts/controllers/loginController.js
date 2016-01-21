@@ -5,10 +5,15 @@
         .module('app')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$scope', '$http', 'auth', 'store', '$location'];
+    LoginController.$inject = ['auth', 'store', '$location'];
     
-    function LoginController($scope, $http, auth, store, $location) {
-        $scope.login = function() {
+    function LoginController(auth, store, $location) {
+        var vm = this;
+        
+        vm.submit = submit;
+        
+        function submit() {
+            console.log("Made it into the submit function");
             auth.signin({}, function (profile, token) {
                 // Success callback
                 store.set('profile', profile);
