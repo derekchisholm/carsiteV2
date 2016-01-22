@@ -10,10 +10,10 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <a ui-sref="login">Login</a>
+                <a href="" ng-controller="LoginController" ng-click="signin()">Login</a>
             </li>
-            <li ng-controller="LogoutController">
-                <a ng-click="logout()">Log out</a>
+            <li>
+                <a href="" ng-controller="LogoutController" ng-click="logout()">Log out</a>
             </li>
         </ul>
     </nav>

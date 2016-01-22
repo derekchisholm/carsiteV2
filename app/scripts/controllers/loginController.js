@@ -5,39 +5,18 @@
         .module('app')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['auth', 'store', '$location'];
+    LoginController.$inject = ['auth', '$scope'];
     
-    function LoginController(auth, store, $location) {
-        var vm = this;
+    function LoginController(auth, $scope) {
+        //$scope.auth = auth;
         
-        vm.submit = submit;
-        vm.username = '';
-        vm.password = '';
-        
-        function onLoginSuccess(profile, token) {
-            store.set('profile', profile);
-            store.set('token', token);
-            $location.path('/');
-            vm.loading = false;
-        }
-        
-        function onLoginFailed() {
-            vm.message.text = 'invalid credentials';
-            vm.loading = false;
-        }
-        
-        function submit() {
-            vm.loading = true;
+        $scope.signin = function() {
             auth.signin({
-                connection: 'Username-Password-Authentication',
-                username: vm.username,
-                password: vm.password,
                 authParams: {
                     scope: 'openid name email'
                 }
-                
-            }, onLoginSuccess, onLoginFailed);
-        };
+            });
+        }
     }
     
 }) ();
