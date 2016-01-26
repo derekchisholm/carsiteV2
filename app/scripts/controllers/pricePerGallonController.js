@@ -5,34 +5,33 @@
         .module('app')
         .controller('PricePerGalController', PricePerGalController);
 
-    PricePerGalController.$inject = ['$http', '$filter'];
+    PricePerGalController.$inject = ['$scope', '$http', '$filter'];
 
-    function PricePerGalController($http, $filter) {
-        var vm = this;
-        
-        $http.get('http://api.carsite.local/fillups').
+    function PricePerGalController($scope, $http, $filter) {
+        $http.get('http://api.carsite.com/api/fillups').
             then(function(data) {
-                vm.fillUps = data.data._embedded.fillups;
+                $scope.fillUps = data.data;
 
-                vm.labels = [];
-                vm.seriesA = [];
-                vm.dataSets = [];
+                $scope.chart = [];
+                $scope.chart.labels = [];
+                $scope.chart.seriesA = [];
+                $scope.chart.dataSets = [];
                 
                 var i = 0;
                 var date = new Date();
                 var price;
                 
-                for (i = 0; i < vm.fillUps.length; i++) {
-                    date = new Date(vm.fillUps[i].date);
+                for (i = 0; i < $scope.fillUps.length; i++) {
+                    date = new Date($scope.fillUps[i].date);
                     date = $filter("date")(date, "shortDate");
-                    price = parseFloat(vm.fillUps[i].price);
+                    price = parseFloat($scope.fillUps[i].price);
 
-                    vm.labels.push(date);
-                    vm.seriesA.push(price.toFixed(3));
+                    $scope.chart.labels.push(date);
+                    $scope.chart.seriesA.push(price.toFixed(3));
                 }
 
-                vm.dataSets.push(vm.seriesA);
-                vm.data = vm.dataSets;
+                $scope.chart.dataSets.push($scope.chart.seriesA);
+                $scope.chart.data = $scope.chart.dataSets;
         });
     }
 })();

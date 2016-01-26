@@ -10,9 +10,10 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <a href="">
-                    <i class="fa fa-sign-out"></i> Log out
-                </a>
+                <a href="" ng-controller="LoginController" ng-click="signin()">Login</a>
+            </li>
+            <li>
+                <a href="" ng-controller="LogoutController" ng-click="logout()">Log out</a>
             </li>
         </ul>
     </nav>

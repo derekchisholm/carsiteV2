@@ -16,19 +16,17 @@
                 </div>
                 <div class="ibox-content">
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <a ui-sref="settings.profile"><i class="fa fa-user fa-4x pull-left"></i></a>
                             <h3>Profile</h3>
-                            <p>Change your basic account, photo, e-mail, and language settings.</p>
+                            <p>Change your basic account, photo, and e-mail.</p>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <a ui-sref="settings.password"><i class="fa fa-lock fa-4x pull-left"></i></a>
                             <h3>Password</h3>
                             <p>Change your password or recover your current one.</p>                      
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <a ui-sref="settings.notifications"><i class="fa fa-envelope-square fa-4x pull-left"></i></a>
                             <h3>Email Notifications</h3>
                             <p>Configure how you receive email notifications.</p>
@@ -47,7 +45,7 @@
                 </div>
                 <div class="ibox-content">
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <a ui-sref="settings.language"><i class="fa fa-language fa-4x pull-left"></i></a>
                             <h3>Units, Language, and Formats</h3>
                             <p>Configure the units, language, and data formats you want to use.</p>
@@ -62,17 +60,19 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Vehicles</h5>
+                    <div>
+                        <h5>Vehicles</h5>
+                        <div class="ibox-tools">
+                            <a ui-sref="fuel.new" class="btn btn-primary btn-xs">Add new vehicle</a>
+                        </div>
+                    </div>                    
                 </div>
                 <div class="ibox-content">
                     <div class="row">
-                        <div class="col-lg-4">
-                            <a><img src="images/infiniti-g37.jpg" alt="" class="img-responsive pull-left"/></a>
+                        <div class="col-lg-3 text-center">
                             <h3>Hotrod G37</h3>
-                            <p>2008 G37 Coupe</p>
-                        </div>
-                        <div class="col-lg-4" class="center-block ">
-                            <a ui-sref="vehicle.new"><i class="fa fa-plus-square-o fa-5x pull-left"></i></a>
+                            <p>2008 G37 Coupe</p> 
+                            <a><img src="images/infiniti-g37.jpg" alt="" class="img-responsive center-block"/></a>                          
                         </div>
                     </div>
                 </div>

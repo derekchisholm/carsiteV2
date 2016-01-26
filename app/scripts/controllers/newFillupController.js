@@ -31,7 +31,7 @@
                 vm.formData.missed = 'Y';
             }
             
-            $http.post('http://api.carsite.local/fillups', vm.formData).
+            $http.post('http://api.carsite.com/api/fillups', vm.formData).
                 then(function(data, status, headers) {
                     $location.path('/fuel/vehicle');
             }, function (data) {
