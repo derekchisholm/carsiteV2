@@ -1,6 +1,6 @@
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
-        <div class="col-lg-6" ng-controller="PricePerGalController as ppg">
+        <div class="col-lg-6" ng-controller="PricePerGalController">
             <div class="ibox float-e-margins">
                 
                 <div class="ibox-title">
@@ -10,12 +10,12 @@
                 </div>
                 
                 <div class="ibox-content">
-                    <canvas id="line" class="chart chart-line" chart-data="ppg.data" chart-labels="ppg.labels" chart-series="ppg.series" chart-click="onClick"></canvas>
+                    <canvas id="line" class="chart chart-line" chart-data="chart.data" chart-labels="chart.labels" chart-series="chart.series" chart-click="onClick"></canvas>
                 </div>
             </div>
         </div>
         
-        <div class="col-lg-6" ng-controller="MilesPerGalController as mpg">
+        <div class="col-lg-6" ng-controller="MilesPerGalController">
             <div class="ibox float-e-margins">
                 
                 <div class="ibox-title">
@@ -25,19 +25,19 @@
                 </div>
                 
                 <div class="ibox-content">
-                    <canvas id="line" class="chart chart-line" chart-data="mpg.data" chart-labels="mpg.labels" chart-series="mpg.series" chart-click="onClick"></canvas>
+                    <canvas id="line" class="chart chart-line" chart-data="chart.data" chart-labels="chart.labels" chart-series="chart.series" chart-click="onClick"></canvas>
                 </div>
             </div>
         </div>
     </div>
             
-    <div class="row" ng-controller="FuelListController as fl">
+    <div class="row" ng-controller="FuelListController">
         <div class="col-lg-12">        
             <div class="ibox float-e-margins">
                 
                 <div class="ibox-title">
                     <div>
-                        <h5>Fill-ups - {{fl.fillUps[0].vehicle}}</h5>
+                        <h5>Fill-ups - {{fillUps[0].vehicle}}</h5>
                         <div class="ibox-tools">
                             <a ui-sref="fuel.new" class="btn btn-primary btn-xs">Add fill-up record</a>
                         </div>
@@ -62,7 +62,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="fillUp in fl.fillUps" footable-complete>
+                            <tr ng-repeat="fillUp in fillUps" footable-complete>
                                 <td>{{fillUp.date}}</td>
                                 <td>{{fillUp.odometer}}</td>
                                 <td>{{fillUp.price}}</td>

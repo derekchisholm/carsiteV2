@@ -1,3 +1,4 @@
+/// <binding />
 'use strict';
 module.exports = function (grunt) {
 
@@ -26,7 +27,7 @@ module.exports = function (grunt) {
         connect: {
             options: {
                 port: 9000,
-                hostname: 'localhost',
+                hostname: 'www.carsite.com',
                 livereload: 35729
             },
             livereload: {

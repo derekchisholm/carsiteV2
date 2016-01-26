@@ -9,6 +9,9 @@
         'chart.js',
         'ncy-angular-breadcrumb',
         'datePicker',
-        'angularMoment'
+        'angularMoment',
+        'auth0',                    //Cloud authentication provider
+        'angular-storage',
+        'angular-jwt'
     ]);
 })();

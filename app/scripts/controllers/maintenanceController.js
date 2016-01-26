@@ -10,7 +10,7 @@
     function ServiceListController($http) {
         var vm = this;
         
-        $http.get('http://api.carsite.local/service').
+        $http.get('http://api.carsite.com/api/service').
             then(function(data) {
                 vm.service = data.data._embedded.service;
         });
