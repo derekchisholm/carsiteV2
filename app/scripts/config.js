@@ -47,8 +47,8 @@
         delete $httpProvider.defaults.headers.common["X-Requested-With"];
         $httpProvider.defaults.useXDomain = true;
         $httpProvider.defaults.withCredentials = true;
-        $httpProvider.defaults.headers.common["Accept"] = "application/json";
-        $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+        //$httpProvider.defaults.headers.common["Accept"] = "application/json";
+        //$httpProvider.defaults.headers.common["Content-Type"] = "application/json";
 
         $stateProvider
 
@@ -155,12 +155,18 @@
                 data: { pageTitle: 'Login' }
             });
     
-        // Add a simple interceptor that will fetch all requests and add the jwt token to its authorization header.
-        // NOTE: in case you are calling APIs which expect a token signed with a different secret, you might
-        // want to check the delegation-token example
-        jwtInterceptorProvider.tokenGetter = function(store) {
+        jwtInterceptorProvider.tokenGetter = function (store) {
             return store.get('token');
         };
+
+        //jwtInterceptorProvider.tokenGetter = ['config', function (config) {
+        //    // Skip authentication for any requests ending in .html
+        //    if (config.url.substr(config.url.length - 5) == '.html') {
+        //        return null;
+        //    }
+        //
+        //    return store.get('token');
+        //}];
         
         // Add a simple interceptor that will fetch all requests and add the jwt token to its authorization header.
         // NOTE: in case you are calling APIs which expect a token signed with a different secret, you might
