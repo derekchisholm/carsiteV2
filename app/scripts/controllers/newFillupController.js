@@ -5,33 +5,32 @@
         .module('app')
         .controller('NewFillUpController', NewFillUpController);
 
-    NewFillUpController.$inject = ['$http', '$location'];
+    NewFillUpController.$inject = ['$scope', '$http', '$location'];
 
-    function NewFillUpController($http, $location) {
-        var vm = this;
+    function NewFillUpController($scope, $http, $location) {
+
+        $scope.create = create;
+        $scope.cancel = cancel;
+        $scope.calcCost = calcCost;
         
-        vm.create = create;
-        vm.cancel = cancel;
-        vm.calcCost = calcCost;
-        
-        vm.formData = {};
+        $scope.formData = {};
 
         function create() {
-            vm.formData.date = vm.formData.date.toLocaleString();
+            $scope.formData.date = $scope.formData.date.toLocaleString();
             
             if($('[name="partialCheck"]').prop('checked', false)){
-                vm.formData.partial = 'N';
+                $scope.formData.partial = 'N';
             } else {
-                vm.formData.partial = 'Y';
+                $scope.formData.partial = 'Y';
             }
             
             if($('[name="missedCheck"]').prop('checked', false)){
-                vm.formData.missed = 'N';
+                $scope.formData.missed = 'N';
             } else {
-                vm.formData.missed = 'Y';
+                $scope.formData.missed = 'Y';
             }
             
-            $http.post('http://api.carsite.com/api/fillups', vm.formData).
+            $http.post('http://api.carsite.com/api/fillups', $scope.formData).
                 then(function(data, status, headers) {
                     $location.path('/fuel/vehicle');
             }, function (data) {
@@ -48,11 +47,11 @@
             var volume;
             var cost;
             
-            if (vm.formData.price > 0 && vm.formData.volume > 0) {
-                price = parseFloat(vm.formData.price);
-                volume = parseFloat(vm.formData.volume);
+            if ($scope.formData.price > 0 && $scope.formData.volume > 0) {
+                price = parseFloat($scope.formData.price);
+                volume = parseFloat($scope.formData.volume);
                 cost = price * volume;
-                vm.formData.cost = cost.toFixed(2);
+                $scope.formData.cost = cost.toFixed(2);
             }
         };
     }
